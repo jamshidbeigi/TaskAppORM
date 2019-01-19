@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TaskApp</string>
+    <string name="app_name">TaskAppORM</string>
     <string name="title_activity_register">register</string>
     <string name="tab_all">All</string>
     <string name="tab_done">Done</string>
