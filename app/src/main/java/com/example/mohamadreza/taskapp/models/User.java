@@ -1,46 +1,55 @@
 package com.example.mohamadreza.taskapp.models;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+
 import java.util.Date;
 import java.util.UUID;
+import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Unique;
 
+@Entity()
 public class User {
 
-    private int mId;
+    @Id
+    private Long id;
+    @Unique
     private String mUserName;
-    private String mEmail;
     private String mPassword;
 
-    public void setId(int id) {
-        mId = id;
+
+    @Generated(hash = 480302010)
+    public User(Long id, String mUserName, String mPassword) {
+        this.id = id;
+        this.mUserName = mUserName;
+        this.mPassword = mPassword;
     }
 
+    @Generated(hash = 586692638)
     public User() {
     }
-    public int getId() {
-        return mId;
+
+    public Long getId() {
+        return this.id;
     }
 
-    public String getUserName() {
-        return mUserName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setUserName(String name) {
-        this.mUserName = name;
+    public String getMUserName() {
+        return this.mUserName;
     }
 
-    public String getEmail() {
-        return mEmail;
+    public void setMUserName(String mUserName) {
+        this.mUserName = mUserName;
     }
 
-    public void setEmail(String email) {
-        this.mEmail = email;
+    public String getMPassword() {
+        return this.mPassword;
     }
 
-    public String getPassword() {
-        return mPassword;
-    }
-
-    public void setPassword(String password) {
-        this.mPassword = password;
+    public void setMPassword(String mPassword) {
+        this.mPassword = mPassword;
     }
 }
