@@ -38,6 +38,7 @@ public class ActivitySignUp extends AppCompatActivity {
                 user.setMUserName(mUserName.getText().toString());
                 user.setMPassword(mPassword.getText().toString());
                 UserLab.getInstance().addUser(ActivitySignUp.this,user);
+                onBackPressed();
             }
         });
     }

@@ -44,18 +44,6 @@ public class UserLab {
             return null;
     }
 
-        //        Cursor curser = mDatabase.rawQuery("SELECT * FROM " + TaskDbSchema.UserTable.NAME + " WHERE "
-//                + TaskDbSchema.UserTable.Cols.USERNAME + " = '" + username
-//                + "' AND " + TaskDbSchema.UserTable.Cols.PASSWORD + " = '" + password + "'", null);
-//
-//        if (curser.getCount() > 0) {
-//            curser.moveToFirst();
-//            int userId=curser.getInt(0);
-//            return userId;
-//        } else {
-//            return -1;
-//        }
-
     public void addUser(Context context,User user) {
 
         List<User> users = mUserDao.queryBuilder()

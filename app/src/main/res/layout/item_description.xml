@@ -10,7 +10,7 @@
     <android.support.constraint.ConstraintLayout
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
@@ -82,12 +82,10 @@
             android:id="@+id/text_block_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:text="Time:"
-            app:layout_constraintBottom_toTopOf="@+id/button_edit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_block_date" />
 
@@ -109,55 +107,15 @@
             android:id="@+id/time_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_done"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toEndOf="@+id/text_block_time"
             app:layout_constraintTop_toBottomOf="@+id/date_text_view" />
 
-        <Button
-            android:id="@+id/button_edit"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:drawableLeft="@drawable/ic_edit"
-            android:text="Edit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/button_delete"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp"
-            android:drawableLeft="@drawable/ic_delete"
-            android:text="Delete"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_done"
-            app:layout_constraintStart_toEndOf="@+id/button_edit" />
-
-        <Button
-            android:id="@+id/button_done"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:drawableLeft="@drawable/ic_done"
-            android:text="Done"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

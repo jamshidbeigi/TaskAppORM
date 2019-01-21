@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mohamadreza.taskapp.models.CurrentPosition;
+import com.example.mohamadreza.taskapp.models.User;
 import com.example.mohamadreza.taskapp.models.UserLab;
 
 public class ActivityLogin extends AppCompatActivity {
@@ -74,9 +75,14 @@ public class ActivityLogin extends AppCompatActivity {
         guestMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Long guestId = (long) -5;
+                CurrentPosition.setUserId(guestId);
+                User user = new User();
+                user.setMUserName("Guest");
+                UserLab.getInstance().addUser(ActivityLogin.this,user);
                 Intent intent = ActivityMain.newIntent(ActivityLogin.this);
                 startActivity(intent);
-                CurrentPosition.setLogedIn(false);
+                finish();
             }
         });
 
@@ -96,9 +102,9 @@ public class ActivityLogin extends AppCompatActivity {
                     Toast.makeText(ActivityLogin.this,"USER NOT FOUND",Toast.LENGTH_SHORT).show();}
                 else{
                     CurrentPosition.setUserId(userId);
-                    CurrentPosition.setLogedIn(true);
                     Intent intent = ActivityMain.newIntent(ActivityLogin.this);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
