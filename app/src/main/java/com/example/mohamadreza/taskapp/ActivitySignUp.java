@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.example.mohamadreza.taskapp.models.DaoSession;
+import com.example.mohamadreza.taskapp.models.TaskDao;
 import com.example.mohamadreza.taskapp.models.User;
 import com.example.mohamadreza.taskapp.models.UserDao;
 

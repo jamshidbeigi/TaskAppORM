@@ -1,7 +1,7 @@
 package com.example.mohamadreza.taskapp.models;
 
 public class CurrentPosition {
-     private static int mUserId;
+     private static Long mUserId;
      private static boolean mIsLogedIn;
 
     public static boolean isLogedIn() {
@@ -12,11 +12,11 @@ public class CurrentPosition {
         mIsLogedIn = logedIn;
     }
 
-    public static int getUserId() {
+    public static Long getUserId() {
         return mUserId;
     }
 
-    public static void setUserId(int muserId) {
+    public static void setUserId(Long muserId) {
         mUserId = muserId;
     }
 }

@@ -15,7 +15,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        MyDevOpenHelper myDevOpenHelper = new MyDevOpenHelper(this,"task-app-db");
+        MyDevOpenHelper myDevOpenHelper = new MyDevOpenHelper(this,"task-app-orm.db");
         Database db = myDevOpenHelper.getWritableDb();
          mDaoSession = new DaoMaster(db).newSession();
 

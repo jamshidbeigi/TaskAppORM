@@ -8,12 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.example.mohamadreza.taskapp.models.CurrentPosition;
+import com.example.mohamadreza.taskapp.models.DaoSession;
+import com.example.mohamadreza.taskapp.models.User;
+import com.example.mohamadreza.taskapp.models.UserDao;
+import com.example.mohamadreza.taskapp.models.UserDao.Properties;
+import org.greenrobot.greendao.query.Query;
+import java.util.List;
 
 public class ActivityLogin extends AppCompatActivity {
-
-    private String username;
-    private String password;
 
 
     public static Intent newIntent(Context context) {
@@ -54,6 +58,30 @@ public class ActivityLogin extends AppCompatActivity {
             public void onClick(View v) {
                 String username = userNameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
+
+                DaoSession daoSession = (App.getApp()).getDaoSession();
+                UserDao userDao = daoSession.getUserDao();
+
+                Query<User> query = userDao.queryBuilder()
+                        .where(
+                        Properties.MUserName.eq(username),
+                        Properties.MPassword.eq(password))
+                        .build();
+                List<User> isFind = query.list();
+
+                if (!isFind.isEmpty()) {
+
+                    User user = isFind.get(0);
+                    Long userId = user.getId();
+                        CurrentPosition.setUserId(userId);
+                        CurrentPosition.setLogedIn(true);
+                        Intent intent = ActivityMain.newIntent(ActivityLogin.this);
+                        startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(ActivityLogin.this, "user not found!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
