@@ -4,20 +4,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.mohamadreza.taskapp.models.CurrentPosition;
-import com.example.mohamadreza.taskapp.models.DaoSession;
-import com.example.mohamadreza.taskapp.models.User;
-import com.example.mohamadreza.taskapp.models.UserDao;
-import com.example.mohamadreza.taskapp.models.UserDao.Properties;
-import org.greenrobot.greendao.query.Query;
-import java.util.List;
+import com.example.mohamadreza.taskapp.models.UserLab;
 
 public class ActivityLogin extends AppCompatActivity {
+
+    private String username;
+    private String password;
 
 
     public static Intent newIntent(Context context) {
@@ -33,8 +34,42 @@ public class ActivityLogin extends AppCompatActivity {
         Button login = findViewById(R.id.button_login);
         TextView signUp = findViewById(R.id.text_view_sign_up);
         TextView guestMode = findViewById(R.id.text_view_guest_mode);
-        final EditText userNameEditText = findViewById(R.id.edit_text_user_name_login);
-        final EditText passwordEditText = findViewById(R.id.edit_text_password_login);
+        EditText userNameEditText = findViewById(R.id.edit_text_user_name_login);
+        EditText passwordEditText = findViewById(R.id.edit_text_password_login);
+
+        userNameEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                username=s.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        passwordEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                password=s.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         guestMode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,31 +91,14 @@ public class ActivityLogin extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = userNameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
-
-                DaoSession daoSession = (App.getApp()).getDaoSession();
-                UserDao userDao = daoSession.getUserDao();
-
-                Query<User> query = userDao.queryBuilder()
-                        .where(
-                        Properties.MUserName.eq(username),
-                        Properties.MPassword.eq(password))
-                        .build();
-                List<User> isFind = query.list();
-
-                if (!isFind.isEmpty()) {
-
-                    User user = isFind.get(0);
-                    Long userId = user.getId();
-                        CurrentPosition.setUserId(userId);
-                        CurrentPosition.setLogedIn(true);
-                        Intent intent = ActivityMain.newIntent(ActivityLogin.this);
-                        startActivity(intent);
-                }
-                else
-                {
-                    Toast.makeText(ActivityLogin.this, "user not found!", Toast.LENGTH_SHORT).show();
+                Long userId = UserLab.getInstance().checkLogin(username,password);
+                if(userId==null){
+                    Toast.makeText(ActivityLogin.this,"USER NOT FOUND",Toast.LENGTH_SHORT).show();}
+                else{
+                    CurrentPosition.setUserId(userId);
+                    CurrentPosition.setLogedIn(true);
+                    Intent intent = ActivityMain.newIntent(ActivityLogin.this);
+                    startActivity(intent);
                 }
             }
         });

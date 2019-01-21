@@ -1,6 +1,7 @@
-package com.example.mohamadreza.taskapp;
+package com.example.mohamadreza.taskapp.Dao;
 
 import android.app.Application;
+
 import com.example.mohamadreza.taskapp.models.DaoMaster;
 import com.example.mohamadreza.taskapp.models.DaoSession;
 

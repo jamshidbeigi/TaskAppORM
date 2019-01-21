@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class ActivityMain extends AppCompatActivity {
 
-    private static final String EXTRA_IS_LOGED_IN="com.example.mohamadreza.taskapp.islogedin";
+    private static final String EXTRA_IS_LOGED_IN = "com.example.mohamadreza.taskapp.islogedin";
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -30,24 +30,25 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks);
 
-        mTabLayout = findViewById(R.id.tab_layout);
-        mAll = findViewById(R.id.all_tasks_tab);
-        mDone = findViewById(R.id.done_tasks_tab);
-        mViewPager = findViewById(R.id.task_view_pager);
-
-        mViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-//                return FragmentTasksList.newInstance(position);
-                return null;
-            }
-
-            @Override
-            public int getCount() {
-                return mTabLayout.getTabCount();
-            }
-        });
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+//        mTabLayout = findViewById(R.id.tab_layout);
+//        mAll = findViewById(R.id.all_tasks_tab);
+//        mDone = findViewById(R.id.done_tasks_tab);
+//        mViewPager = findViewById(R.id.task_view_pager);
+//
+//        mViewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+//            @Override
+//            public Fragment getItem(int position) {
+////                return FragmentTasksList.newInstance(position);
+//                return null;
+//            }
+//
+//            @Override
+//            public int getCount() {
+//                return mTabLayout.getTabCount();
+//            }
+//        });
+//        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+//    }
     }
 }
 

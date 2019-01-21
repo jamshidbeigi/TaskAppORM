@@ -7,15 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import com.example.mohamadreza.taskapp.models.DaoSession;
-import com.example.mohamadreza.taskapp.models.TaskDao;
 import com.example.mohamadreza.taskapp.models.User;
-import com.example.mohamadreza.taskapp.models.UserDao;
+import com.example.mohamadreza.taskapp.models.UserLab;
 
 public class ActivitySignUp extends AppCompatActivity {
 
     private EditText mUserName;
     private EditText mPassword;
+    private Button mSignUp;
 
     public static Intent newIntent(Context context) {
         Intent intent = new Intent(context, ActivitySignUp.class);
@@ -29,23 +28,16 @@ public class ActivitySignUp extends AppCompatActivity {
 
         mUserName = findViewById(R.id.edit_text_username);
         mPassword = findViewById(R.id.edit_text_password);
-        Button signUp = findViewById(R.id.button_sign_up);
+        mSignUp = findViewById(R.id.button_sign_up);
 
-
-        signUp.setOnClickListener(new View.OnClickListener() {
+        mSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                DaoSession daoSession = (App.getApp()).getDaoSession();
-                UserDao userDao = daoSession.getUserDao();
-
                 User user = new User();
-                String userName = mUserName.getText().toString();
-                String password = mPassword.getText().toString();
-                user.setMUserName(userName);
-                user.setMPassword(password);
-                userDao.insert(user);
-                onBackPressed();
+                user.setMUserName(mUserName.getText().toString());
+                user.setMPassword(mPassword.getText().toString());
+                UserLab.getInstance().addUser(ActivitySignUp.this,user);
             }
         });
     }
